@@ -32,3 +32,53 @@
 #  HEAD      TAIL       
 #   |         |
 #   0 -> 1 -> 2 -> None
+
+# While they aren't dictionaries, nodes can be thought of this way.
+# You can think of it as a list of nested dictionaries
+
+# head = {
+#     "value": 4,
+#     "next": {
+#         "value": 8,
+#         "next": {
+#             "value": 20,
+#             "next": {
+#                 "value": 9,
+#                 "next": None
+#             }
+#         }
+#     }
+# }
+
+# print(head['next']['next']['next']['value'])
+
+# This is to be referenced by LinkedList in order to create nodes in each method
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LinkedList:
+    # Create new node
+    def __init__(self, value):
+
+        # variable to be used in this method
+        # passes value to Node
+        new_node = Node(value)
+        self.head = new_node
+        self.tail = new_node
+        self.length = 1
+
+# calls LinkedList class and passes value of 4
+my_linked_list = LinkedList(4)
+print(my_linked_list.head.value)
+
+    # create new Node, then add node to end
+    # def append(self, value):
+
+    # create new Node, add Node to beginning
+    # def prepend(self, value):
+
+    # create new Node, insert Node
+    # def insert(self, index, value):
+        

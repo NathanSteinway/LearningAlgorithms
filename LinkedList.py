@@ -69,9 +69,33 @@ class LinkedList:
         self.tail = new_node
         self.length = 1
 
+    def print_list(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
+
+    def append(self, value):
+        new_node = Node(value)
+
+        # in case list is empty
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+
+        # in case list is not empty
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.length += 1
+        return True
+
 # calls LinkedList class and passes value of 4
-my_linked_list = LinkedList(4)
-print(my_linked_list.head.value)
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
+my_linked_list.print_list()
+
+# print(my_linked_list.head.value)
 
     # create new Node, then add node to end
     # def append(self, value):

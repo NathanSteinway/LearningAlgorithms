@@ -15,8 +15,12 @@
 # Key differences
 
 # Python Lists:                    |    Linked Lists:
-# 1) Contiguous, can be indexed    |    1) No index
-# 2) next to one another in mem    |    2) separate in mem
+# 1) Contiguously stored in mem    |    1) Not stored contiguously in mem
+#     Lists require a BLOCK of mem |        Linked Lists can make use of fragments of memory
+# 2) May access indexes O(1)       |    2) May access indexes O(n)
+#     Block of mem isn't ambiguous |        Must traverse the Linked List because its data is not all in one place
+# 3) Each index mapped to address
+
 
 # Key Features of Linked Lists
 # 1) Head points to first node in list
@@ -25,6 +29,6 @@
 # 4) last node points to None
 
 
-#  HEAD            TAIL       
-#   |               |
+#  HEAD      TAIL       
+#   |         |
 #   0 -> 1 -> 2 -> None

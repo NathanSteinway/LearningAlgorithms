@@ -29,48 +29,85 @@ class LinkedList:
         return True
 
     def pop(self):
-
-        # checks if empty
         if self.length == 0:
             return None
-        
-        # both self.head because they both start on the first node
         temp = self.head
         pre = self.head
-
-        while temp.next is not None:
+        while(temp.next):
             pre = temp
             temp = temp.next
-        
         self.tail = pre
         self.tail.next = None
-
-        # even though this brings the length to 0, head and tail still point to the node
         self.length -= 1
-
-        # fixed it!
         if self.length == 0:
             self.head = None
             self.tail = None
-
         return temp
-    
-my_linked_list = LinkedList(1)
-my_linked_list.append(2)
 
-# (2) Items - Returns 2 Node
-print(my_linked_list.pop().value)
-# (1) Item -  Returns 1 Node
-print(my_linked_list.pop().value)
-# (0) Items - Returns None
-print(my_linked_list.pop())
+    def prepend(self, value):
+
+        new_node = Node(value)
+
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
+
+
+
+
+my_linked_list = LinkedList(2)
+my_linked_list.append(3)
+
+print('Before prepend():')
+print('----------------')
+print('Head:', my_linked_list.head.value)
+print('Tail:', my_linked_list.tail.value)
+print('Length:', my_linked_list.length, '\n')
+print('Linked List:')
+my_linked_list.print_list()
+
+
+my_linked_list.prepend(1)
+
+
+print('\n\nAfter prepend():')
+print('---------------')
+print('Head:', my_linked_list.head.value)
+print('Tail:', my_linked_list.tail.value)
+print('Length:', my_linked_list.length, '\n')
+print('Linked List:')
+my_linked_list.print_list()
+
 
 
 """
     EXPECTED OUTPUT:
+    
+    Before prepend():
     ----------------
+    Head: 2
+    Tail: 3
+    Length: 2 
+
+    Linked List:
     2
+    3
+
+
+    After prepend():
+    ---------------
+    Head: 1
+    Tail: 3
+    Length: 3 
+
+    Linked List:
     1
-    None
+    2
+    3   
 
 """
